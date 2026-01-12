@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagula-II Gram Panchayat | Government of West Bengal</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --navy: #000080;
+            --white: #ffffff;
+            --black: #000000;
+            --paper: #fdfdfd;
+            --border-color: #e0e0e0;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f5;
+            font-family: 'Times New Roman', Times, serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            background-color: var(--white);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+        .header-top {
+            display: flex;
+            height: 12px;
+            width: 100%;
+        }
+        .strip-saffron { background-color: var(--saffron); flex: 1; }
+        .strip-white { background-color: var(--white); flex: 1; }
+        .strip-green { background-color: var(--green); flex: 1; }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 5px solid var(--saffron);
+            background: linear-gradient(to bottom, #fff 0%, #f9f9f9 100%);
+        }
+        .emblem-container {
+            margin-bottom: 1rem;
+            color: var(--navy);
+            font-size: 3rem;
+            line-height: 1;
+        }
+        .chakra {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--navy);
+            border-radius: 50%;
+            position: relative;
+            box-sizing: border-box;
+            background: radial-gradient(circle, transparent 30%, var(--navy) 31%, transparent 33%);
+        }
+        .chakra::before, .chakra::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            margin: auto;
+            background: var(--navy);
+        }
+        .chakra::before { width: 2px; height: 100%; }
+        .chakra::after { width: 100%; height: 2px; }
+        .spokes {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+        }
+        .spoke {
+            position: absolute;
+            width: 2px; height: 100%;
+            left: 50%; margin-left: -1px;
+            background: var(--navy);
+        }
+        .s-1 { transform: rotate(15deg); }
+        .s-2 { transform: rotate(30deg); }
+        .s-3 { transform: rotate(45deg); }
+        .s-4 { transform: rotate(60deg); }
+        .s-5 { transform: rotate(75deg); }
+        .s-6 { transform: rotate(105deg); }
+        .s-7 { transform: rotate(120deg); }
+        .s-8 { transform: rotate(135deg); }
+        .s-9 { transform: rotate(150deg); }
+        .s-10 { transform: rotate(165deg); }
+
+        h1 {
+            color: var(--navy);
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: var(--saffron);
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--navy);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: var(--navy);
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        nav {
+            background-color: var(--navy);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav span {
+            margin: 0 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .section-box {
+            border: 1px solid var(--saffron);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #fffaf5;
+            border-left: 5px solid var(--saffron);
+        }
+
+        .notice-board {
+            border: 2px solid var(--navy);
+            padding: 1rem;
+            background-color: #f0f0ff;
+        }
+        .notice-item {
+            border-bottom: 1px solid #ccc;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        .notice-item:last-child { border-bottom: none; }
+        .new-tag {
+            background-color: #d00;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-right: 5px;
+            vertical-align: middle;
+            font-family: sans-serif;
+            font-weight: bold;
+            animation: blink 2s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0.5; } }
+
+        .service-link {
+            display: block;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+            border-left: 4px solid var(--green);
+        }
+        .service-link:hover {
+            background-color: #f9f9f9;
+            padding-left: 15px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--navy);
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .officials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .official-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            background: white;
+        }
+        .official-role {
+            color: var(--saffron);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .official-name {
+            color: var(--navy);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        footer {
+            background-color: var(--navy);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-top: 5px solid var(--green);
+            margin-top: 2rem;
+        }
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #aaa;
+            max-width: 800px;
+            margin: 1rem auto 0;
+            line-height: 1.4;
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 1.8rem; }
+            .header-top { height: 6px; }
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; border: none; max-width: 100%; }
+            nav, .service-link { border: 1px solid #000; color: black; }
+            a { text-decoration: none; color: black; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-top">
+        <div class="strip-saffron"></div>
+        <div class="strip-white"></div>
+        <div class="strip-green"></div>
+    </div>
+
+    <header>
+        <div class="emblem-container">
+            <div class="chakra" role="img" aria-label="National Emblem Symbol">
+                <div class="spokes">
+                    <div class="spoke s-1"></div>
+                    <div class="spoke s-2"></div>
+                    <div class="spoke s-3"></div>
+                    <div class="spoke s-4"></div>
+                    <div class="spoke s-5"></div>
+                    <div class="spoke s-6"></div>
+                    <div class="spoke s-7"></div>
+                    <div class="spoke s-8"></div>
+                    <div class="spoke s-9"></div>
+                    <div class="spoke s-10"></div>
+                </div>
+            </div>
+        </div>
+        <h1>Bagula-II Gram Panchayat</h1>
+        <div class="subtitle">Hanskhali Block, Nadia District, West Bengal</div>
+        <h2>Citizen Information Portal</h2>
+    </header>
+
+    <nav>
+        <span>Governance</span> | 
+        <span>Services</span> | 
+        <span>Schemes</span> | 
+        <span>Notices</span> | 
+        <span>Contact</span>
+    </nav>
+
+    <div class="main-content">
+        <div class="left-col">
+            <section class="section-box">
+                <h3>Welcome</h3>
+                <p>Welcome to the official digital information portal of Bagula-II Gram Panchayat. We are committed to ensuring transparency, effective local governance, and the delivery of essential public services to all residents of Hanskhali Block. This platform serves as a bridge between the Gram Panchayat administration and the citizens.</p>
+            </section>
+
+            <section class="section-box">
+                <h3>Gram Panchayat Administration</h3>
+                <div class="officials-grid">
+                    <div class="official-card">
+                        <div class="official-role">Pradhan</div>
+                        <div class="official-name">Incumbent</div>
+                        <div>Bagula-II Gram Panchayat</div>
+                    </div>
+                    <div class="official-card">
+                        <div class="official-role">Upa-Pradhan</div>
+                        <div class="official-name">Incumbent</div>
+                        <div>Bagula-II Gram Panchayat</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-box">
+                <h3>Essential Services</h3>
+                <p>Access vital forms and portals for birth and death registration services.</p>
+                
+                <a href="https://dc.crsorgi.gov.in/assets/download/all_forms_CRS_2019_new.pdf" target="_blank" class="service-link">
+                    Download CRS Forms (Birth & Death Registration)
+                </a>
+                <a href="https://janma-mrityutathya.wb.gov.in/" target="_blank" class="service-link">
+                    Janma–Mrityu Tathya Portal (West Bengal)
+                </a>
+            </section>
+
+            <section class="section-box">
+                <h3>Welfare & Schemes</h3>
+                <ul>
+                    <li><strong>Lakshmi Bhandar:</strong> Financial support for women heads of households.</li>
+                    <li><strong>Swasthya Sathi:</strong> Health insurance coverage for families.</li>
+                    <li><strong>MGNREGA (100 Days Work):</strong> Employment guarantee scheme.</li>
+                    <li><strong>Krishak Bandhu:</strong> Financial assistance for farmers.</li>
+                    <li><strong>Jai Bangla Pension Scheme:</strong> Social security for elderly and widows.</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="right-col">
+            <section class="notice-board">
+                <h3 style="margin-top:0;">Public Notices</h3>
+                <div class="notice-item">
+                    <span class="new-tag">NEW</span>
+                    <strong>Gram Sansad Meeting</strong><br>
+                    Scheduled for 15th of this month at Panchayat Hall.
+                </div>
+                <div class="notice-item">
+                    <span class="new-tag">NEW</span>
+                    <strong>Duare Sarkar Camp</strong><br>
+                    Upcoming camp at local school grounds. Bring required documents.
+                </div>
+                <div class="notice-item">
+                    <strong>Tender Notification</strong><br>
+                    Road repair works for Ward No. 4.
+                </div>
+                <div class="notice-item">
+                    <strong>Voter List Update</strong><br>
+                    Correction of names in electoral roll ongoing.
+                </div>
+            </section>
+
+            <section class="section-box">
+                <h3>Emergency Contacts</h3>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th>Service</th>
+                            <th>Contact</th>
+                        </tr>
+                        <tr>
+                            <td>Police (Hanskhali)</td>
+                            <td>100 / (Contact Local Station)</td>
+                        </tr>
+                        <tr>
+                            <td>Ambulance</td>
+                            <td>102</td>
+                        </tr>
+                        <tr>
+                            <td>Fire</td>
+                            <td>101</td>
+                        </tr>
+                        <tr>
+                            <td>Child Helpline</td>
+                            <td>1098</td>
+                        </tr>
+                        <tr>
+                            <td>Women Helpline</td>
+                            <td>1090</td>
+                        </tr>
+                        <tr>
+                            <td>BDO Office</td>
+                            <td>(Contact Block Office)</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section class="section-box">
+                <h3>Citizen Links</h3>
+                <a href="https://www.digitalindia.gov.in/" target="_blank" class="service-link">Digital India</a>
+                <a href="https://wbpms.gov.in/" target="_blank" class="service-link">WBPMS Portal</a>
+                <a href="https://edistrict.wb.gov.in/" class="service-link">Right to Public Service (RTPS)</a>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <strong>Contact Us:</strong><br>
+            Bagula-II Gram Panchayat Office<br>
+            Hanskhali, Nadia, West Bengal - 741502<br>
+            Phone: (03473) 272223 <br>
+            Email: bagula2nogp111@gmail.com
+        </div>
+        
+        <div class="disclaimer">
+            "This website is an independent citizen information portal created for public awareness and facilitation purposes only. It is not the official website of the Government of West Bengal or the Government of India. All information provided here is for general guidance. For official purposes, please visit the respective government department websites."
+        </div>
+        <p>&copy; 2026 Bagula-II Gram Panchayat Information Portal</p>
+    </footer>
+</div>
+
+</body>
+</html>
